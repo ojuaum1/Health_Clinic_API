@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FLtMPEBSCh551Ej8EmFLi+b1yoF3u+a8cssRba9aFsc=",
+  "Source": "HealtClinic.API",
+  "BasePath": "_content/HealtClinic.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
