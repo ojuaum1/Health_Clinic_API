@@ -48,6 +48,9 @@ namespace HealtClinic.API.Migrations
 
                     b.HasKey("IdClinica");
 
+                    b.HasIndex("CNPJ")
+                        .IsUnique();
+
                     b.ToTable("Clinica");
                 });
 
@@ -63,16 +66,15 @@ namespace HealtClinic.API.Migrations
                     b.Property<Guid>("IdPaciente")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdProntuario")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Prontuario")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("IdConsulta");
 
                     b.HasIndex("IdMedico");
 
                     b.HasIndex("IdPaciente");
-
-                    b.HasIndex("IdProntuario");
 
                     b.ToTable("Consulta");
                 });
@@ -175,6 +177,9 @@ namespace HealtClinic.API.Migrations
 
                     b.HasKey("IdMedico");
 
+                    b.HasIndex("CRM")
+                        .IsUnique();
+
                     b.HasIndex("IdEspecialidade");
 
                     b.HasIndex("IdTipoUsuario");
@@ -212,25 +217,6 @@ namespace HealtClinic.API.Migrations
                     b.HasIndex("IdTipoUsuario");
 
                     b.ToTable("Paciente");
-                });
-
-            modelBuilder.Entity("HealtClinic.API.Domain.Prontuario", b =>
-                {
-                    b.Property<Guid>("IdProntuario")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("DescProntuario")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("tituloDaConsulta")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.HasKey("IdProntuario");
-
-                    b.ToTable("Prontuario");
                 });
 
             modelBuilder.Entity("HealtClinic.API.Domain.TipoUsuario", b =>
@@ -298,17 +284,9 @@ namespace HealtClinic.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HealtClinic.API.Domain.Prontuario", "Prontuario")
-                        .WithMany()
-                        .HasForeignKey("IdProntuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Medico");
 
                     b.Navigation("Paciente");
-
-                    b.Navigation("Prontuario");
                 });
 
             modelBuilder.Entity("HealtClinic.API.Domain.Feedback", b =>

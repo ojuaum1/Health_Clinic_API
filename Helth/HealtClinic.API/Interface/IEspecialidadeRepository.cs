@@ -1,6 +1,10 @@
-﻿namespace HealtClinic.API.Interface
+﻿using HealtClinic.API.Domain;
+
+namespace HealtClinic.API.Interface
 {
-    public class IEspecialidadeRepository
+    public interface IEspecialidadeRepository
     {
+        void Cadastrar(Especialidade especialidade);
+        void Delete(Guid id);
     }
 }

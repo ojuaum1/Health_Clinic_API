@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HealtClinic.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Health : Migration
+    public partial class migration_V6 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,19 +37,6 @@ namespace HealtClinic.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Especialidade", x => x.IdEspecialidade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Prontuario",
-                columns: table => new
-                {
-                    IdProntuario = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    tituloDaConsulta = table.Column<string>(type: "VARCHAR(100)", nullable: false),
-                    DescProntuario = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prontuario", x => x.IdProntuario);
                 });
 
             migrationBuilder.CreateTable(
@@ -161,9 +148,9 @@ namespace HealtClinic.API.Migrations
                 columns: table => new
                 {
                     IdConsulta = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdProntuario = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdPaciente = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdMedico = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdMedico = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Prontuario = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,12 +166,6 @@ namespace HealtClinic.API.Migrations
                         column: x => x.IdPaciente,
                         principalTable: "Paciente",
                         principalColumn: "IdPaciente",
-                        onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
-                        name: "FK_Consulta_Prontuario_IdProntuario",
-                        column: x => x.IdProntuario,
-                        principalTable: "Prontuario",
-                        principalColumn: "IdProntuario",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -222,6 +203,12 @@ namespace HealtClinic.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Clinica_CNPJ",
+                table: "Clinica",
+                column: "CNPJ",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Consulta_IdMedico",
                 table: "Consulta",
                 column: "IdMedico");
@@ -230,11 +217,6 @@ namespace HealtClinic.API.Migrations
                 name: "IX_Consulta_IdPaciente",
                 table: "Consulta",
                 column: "IdPaciente");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Consulta_IdProntuario",
-                table: "Consulta",
-                column: "IdProntuario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedback_IdConsulta",
@@ -255,6 +237,12 @@ namespace HealtClinic.API.Migrations
                 name: "IX_Gestão_IdTipoUsuario",
                 table: "Gestão",
                 column: "IdTipoUsuario");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Medico_CRM",
+                table: "Medico",
+                column: "CRM",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Medico_IdEspecialidade",
@@ -306,9 +294,6 @@ namespace HealtClinic.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Paciente");
-
-            migrationBuilder.DropTable(
-                name: "Prontuario");
 
             migrationBuilder.DropTable(
                 name: "Especialidade");

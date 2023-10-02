@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HealtClinic.API.Domain
 {
     [Table(nameof(Medico))]
+    [Microsoft.EntityFrameworkCore.Index(nameof(CRM), IsUnique = true)]
     public class Medico
     {
         [Key]

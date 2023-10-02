@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\48342168883\\Desktop\\event+_manha\\HealtClinic.API\\HealtClinic.API.csproj": {}
+    "C:\\Users\\48342168883\\Desktop\\Health_Clinic_API\\Helth\\HealtClinic.API\\HealtClinic.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\48342168883\\Desktop\\event+_manha\\HealtClinic.API\\HealtClinic.API.csproj": {
+    "C:\\Users\\48342168883\\Desktop\\Health_Clinic_API\\Helth\\HealtClinic.API\\HealtClinic.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\48342168883\\Desktop\\event+_manha\\HealtClinic.API\\HealtClinic.API.csproj",
+        "projectUniqueName": "C:\\Users\\48342168883\\Desktop\\Health_Clinic_API\\Helth\\HealtClinic.API\\HealtClinic.API.csproj",
         "projectName": "HealtClinic.API",
-        "projectPath": "C:\\Users\\48342168883\\Desktop\\event+_manha\\HealtClinic.API\\HealtClinic.API.csproj",
+        "projectPath": "C:\\Users\\48342168883\\Desktop\\Health_Clinic_API\\Helth\\HealtClinic.API\\HealtClinic.API.csproj",
         "packagesPath": "C:\\Users\\48342168883\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\48342168883\\Desktop\\event+_manha\\HealtClinic.API\\obj\\",
+        "outputPath": "C:\\Users\\48342168883\\Desktop\\Health_Clinic_API\\Helth\\HealtClinic.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\48342168883\\AppData\\Roaming\\NuGet\\NuGet.Config",

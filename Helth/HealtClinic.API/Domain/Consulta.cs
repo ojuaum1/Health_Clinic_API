@@ -11,12 +11,6 @@ namespace HealtClinic.API.Domain
         [Key]
         public Guid IdConsulta { get; set; } = Guid.NewGuid();
 
-        public Guid IdProntuario { get; set; }
-
-        [ForeignKey("IdProntuario")]
-        public Prontuario? Prontuario { get; set; }
-
-
         public Guid IdPaciente { get; set; }
 
         [ForeignKey("IdPaciente")]
@@ -27,6 +21,10 @@ namespace HealtClinic.API.Domain
 
         [ForeignKey("IdMedico")]
         public Medico? Medico { get; set; }
+
+        [Column(TypeName = "TEXT")]
+        [Required(ErrorMessage = "Prontuario Obrigatorio")]
+        public string Prontuario { get; set; }
 
     }
 }

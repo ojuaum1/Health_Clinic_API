@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace HealtClinic.API.Domain
 {
     [Table(nameof(Clinica))]
+    [Microsoft.EntityFrameworkCore.Index(nameof(CNPJ), IsUnique = true)]
     public class Clinica
     {
         [Key]
