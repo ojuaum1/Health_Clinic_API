@@ -6,6 +6,7 @@ namespace HealtClinic.API.Interface
     {
         void Cadastrar(Feedback feedback);
         void Delete(Guid id);
+        List<Feedback> ListarDeUsuario(Guid id);
         void Atualizar(Guid id, Feedback feedback);
     }
 }
