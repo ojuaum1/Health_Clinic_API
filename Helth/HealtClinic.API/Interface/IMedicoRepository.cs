@@ -6,8 +6,5 @@ namespace HealtClinic.API.Interface
     {
         void Cadastrar(Medico medico);
 
-        Medico BuscarPorId(Guid Id);
-
-        Medico BuscarPorEmailEsenha(string email, string senha);
     }
 }

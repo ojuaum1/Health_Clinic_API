@@ -1,5 +1,6 @@
 ﻿using HealtClinic.API.Domain;
 using HealtClinic.API.Interface;
+using HealtClinic.API.Utils;
 using webapi.event_.manha.Contexts;
 
 namespace HealtClinic.API.Repository
@@ -8,7 +9,7 @@ namespace HealtClinic.API.Repository
     {
         public class UsuarioRepository : IUsuarioRepository
         {
-            private readonly HealthContext_healthContext;
+            private readonly HealthContext _healthContext;
 
             public UsuarioRepository()
             {
@@ -29,7 +30,8 @@ namespace HealtClinic.API.Repository
                             Senha = u.Senha,
                             TipoUsuario = new TipoUsuario
                             {
-                                IdTipoUsuario = u.TipoUsuario.IdTipoUsuario
+                                IdTipoUsuario = u.TipoUsuario.IdTipoUsuario,
+                                titulo = u.TipoUsuario.titulo
                             }
                         }).FirstOrDefault(u => u.Email == email)!;
 
@@ -95,28 +97,29 @@ namespace HealtClinic.API.Repository
                     throw;
                 }
             }
-             
-             public void Deletar(string email, string senha)
-        {
-            try
+
+            public void Deletar(string email, string senha)
             {
-                Usuario usuarioDeletado = _healthContext.Usuario.FirstOrDefault(z => z.Email == email)!;
-
-                if (usuarioDeletado != null)
+                try
                 {
-                    bool confere = Criptografia.CompararHash(senha, usuarioDeletado.Senha!);
+                    Usuario usuarioDeletado = _healthContext.Usuarios.FirstOrDefault(z => z.Email == email)!;
 
-                    if (confere)
+                    if (usuarioDeletado != null)
                     {
-                        _healthContext.Usuario.Remove(usuarioDeletado);
-                        _healthContext.SaveChanges();
+                        bool confere = Criptografia.CompararHash(senha, usuarioDeletado.Senha!);
+
+                        if (confere)
+                        {
+                            _healthContext.Usuarios.Remove(usuarioDeletado);
+                            _healthContext.SaveChanges();
+                        }
                     }
                 }
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-                throw;
+                    throw;
+                }
             }
         }
     }

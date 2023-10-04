@@ -1,45 +1,48 @@
-﻿//using HealtClinic.API.Domain;
-//using Microsoft.EntityFrameworkCore;
-//using webapi.event_.manha.Contexts;
+﻿using HealtClinic.API.Domain;
+using Microsoft.EntityFrameworkCore;
+using webapi.event_.manha.Contexts;
 
-//namespace HealtClinic.API.Repository
-//{
-//    public class TiposUsuarioRepository
-//    {
-//        private readonly HealthContext eventContext;
+namespace HealtClinic.API.Repository
+{
+    public class TiposUsuarioRepository
+    {
+        private readonly HealthContext _healthContext;
 
-//        public TiposUsuarioRepository()
-//        {
-//            HealthContext = new HealthContext();
-//        }
+        public TiposUsuarioRepository()
+        {
+            _healthContext = new HealthContext();
+        }
 
-//        public void Atualizar(Guid Id, TipoUsuario tiposUsuario)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public void Atualizar(Guid id, TipoUsuario tipoUsuario)
+        {
+            TipoUsuario tipoBuscado = _healthContext!.TipoUsuarios.Find(id)!;
 
-//        public TipoUsuario BuscarPorId(Guid Id)
-//        {
-//            try
-//            {
-//                return _context.TiposUsuario.Find(id)!;
-//            }
-//            catch (Exception)
-//            {
-//                throw;
-//            }
+            if (tipoBuscado != null)
+            {
+                tipoBuscado.titulo = tipoUsuario.titulo;
+            }
+            _healthContext.TipoUsuarios.Update(tipoBuscado!);
+            _healthContext.SaveChanges();
+        }
+        public void Cadastrar(TipoUsuario perfilNovo)
+        {
+            try
+            {
+                _healthContext.TipoUsuarios.Add(perfilNovo);
+                _healthContext.SaveChanges();
+            }
+            catch (Exception)
+            {
 
-//        }
+                throw;
+            }
+        }
+    }
 
-//        public void Cadastrar(TipoUsuario tiposUsuario)
-//        {
-//            eventContext.TipoUsuarios.Add(tiposUsuario);
-//            eventContext.SaveChanges();
-
-//        }
+ 
 
 
 
-//    }
+    }
 
-//}
+

@@ -168,3 +168,6 @@ C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\obj\Debug\n
 C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\obj\Debug\net7.0\HealtClinic.API.pdb
 C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\obj\Debug\net7.0\HealtClinic.API.genruntimeconfig.cache
 C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\obj\Debug\net7.0\ref\HealtClinic.API.dll
+C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\bin\Debug\net7.0\HealtClinic.API.xml
+C:\Users\48342168883\Desktop\Health_Clinic_API\Helth\HealtClinic.API\obj\Debug\net7.0\HealtClinic.API.xml

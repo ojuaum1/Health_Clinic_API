@@ -9,6 +9,8 @@ namespace HealtClinic.API.Interface
             void Delete(Guid id);
             List<TipoUsuario> Listar();
             void Atualizar(Guid id, TipoUsuario TipoUsuario);
+
+
         
     }
 }

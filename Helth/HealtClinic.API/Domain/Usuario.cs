@@ -36,7 +36,10 @@ namespace HealtClinic.API.Domain
         public string? SobreNome { get; set; }
 
         // defini que usuarios tem referencia com TipoUsuarios
-        [ForeignKey("IdTipoUsuario")]
+        [Required(ErrorMessage ="O tipo de usuário é obrigatório")]
+        public Guid IdTipoUsuario { get; set; }
+
+        [ForeignKey(nameof(IdTipoUsuario))]
         public TipoUsuario? TipoUsuario { get; set; }
     }
 }
